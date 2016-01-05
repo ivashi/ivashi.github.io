@@ -3,7 +3,6 @@ h{
   font-size: 50pt;
   font-family: fantasy;
   background-color: lightblue;
-  text-align: center;
 }
 *{
   background-color: Silver;
@@ -19,6 +18,9 @@ h{
     border-color: white;
     text-align: center;
     z-index: 1;
+}
+#navbar{
+  position: fixed;
 }
 ul {
     list-style-type: none;
