@@ -18,34 +18,26 @@ h{
     text-align: center;
     z-index: 1;
 }
-
-#menu{
-  background-color: Silver;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
-.menu_button{
-    height: 50px;
-    width: 120px;
-    position: relative;
-    border-color: white;
-    background-color: lightblue;
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 5px;
-    margin: auto;
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
     text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
-.menu_button:hover{
-    text-size: 25pt;
-    height: 60px;
-    width: 130px;
-    background-color: white;
+li a:hover:not(.active) {
+    background-color: #111;
 }
-
-td{
-    text-size: 20pt;
-    font-family:fantasy;
-    text-align: center;
+.active {
+    background-color: #4CAF50;
 }
