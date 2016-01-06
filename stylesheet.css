@@ -1,5 +1,5 @@
 *{
-  background-color: Silver;
+  background-color: black;
 }
 #header{
     position: relative;
@@ -14,9 +14,7 @@ div h{
   font-family: fantasy;
   background-color: #333;
   color: white;
-  margin-top: -50px;
   position: relative;
-  vertical-align: middle;
 
 }
 #navbar{
@@ -43,8 +41,30 @@ li a {
     font-family: fantasy;
 }
 li a:hover:not(.active) {
-    background-color: lightblue;
+    background-color: #0099ff;
 }
 .active {
     background-color: DimGray;
+}
+#resume{
+  margin-left: 200px;
+  margin-top: 25px;
+}
+#quote{
+  font-family:monospace;
+  font-size: 20pt;
+  text-align: center;
+  color: white;
+}
+#quotename{
+  font-family: monospace;
+  font-size: 18pt;
+  text-align: center;
+  color: white;
+}
+a{
+  text-decoration: none;
+}
+#quotename:hover{
+  color: #0099ff;
 }
