@@ -68,3 +68,13 @@ a{
 #quotename:hover{
   color: #0099ff;
 }
+
+#personal{
+  width: 50%;
+  height: 300 px;
+  align: middle;
+  margin-left: 275px;
+}
+.photohover:hover{
+  -webkit-filter: blur(25px);
+}
