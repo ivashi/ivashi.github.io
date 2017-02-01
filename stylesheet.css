@@ -1,6 +1,4 @@
-*{
-  background-color: black;
-}
+
 #header{
     position: relative;
     width: 100%;
@@ -17,56 +15,37 @@ div h{
   position: relative;
 
 }
-#navbar{
-  position: relative;
-}
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: #333;
+    width: 20%;
+    background-color: #f1f1f1;
+    position: fixed;
+    overflow: auto;
 }
-li {
-    float: left;
-}
+
 li a {
     display: block;
-    color: white;
-    background-color: #333;
-    text-align: center;
-    font-size: 20px;
-    padding: 14px 126px;
+    color: #000;
+    padding: 30px 16px;
     text-decoration: none;
-    font-family: fantasy;
+    text-align:center;
+    font-family: verdana;
 }
+
+li a.active {
+    background-color: grey;
+    color: white;
+}
+
 li a:hover:not(.active) {
-    background-color: #0099ff;
+    background-color: #1A3FA2;
+    color: white;
 }
-.active {
-    background-color: DimGray;
-}
-#resume{
-  margin-left: 200px;
-  margin-top: 25px;
-}
-#quote{
-  font-family:monospace;
-  font-size: 20pt;
-  text-align: center;
-  color: white;
-}
-#quotename{
-  font-family: monospace;
-  font-size: 18pt;
-  text-align: center;
-  color: white;
-}
+
 a{
   text-decoration: none;
-}
-#quotename:hover{
-  color: #0099ff;
 }
 
 #personal{
