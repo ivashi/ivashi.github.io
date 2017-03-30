@@ -1,3 +1,15 @@
 .personalphoto{
   border-radius: 50%;
 }
+a.navbarstuff{
+  text-decoration: none;
+  color: white;
+}
+a.navbarstuff.active{
+  text-decoration: none;
+  color: grey;
+}
+
+a.navbarstuff:hover{
+  color: grey;
+}
