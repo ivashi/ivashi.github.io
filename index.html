@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ishan Vashishta</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 46' fill='none' stroke='%2350fa7b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><rect x='5' y='1' width='46' height='27' rx='2'/><rect x='1' y='28' width='54' height='16' rx='2'/><line x1='7' y1='33' x2='49' y2='33'/><line x1='7' y1='37' x2='49' y2='37'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:      #1e1f2e;
+      --surface: #282a36;
+      --border:  #44475a;
+      --text:    #f8f8f2;
+      --secondary: #6272a4;
+      --muted:   #44475a;
+      --green:   #50fa7b;
+      --pink:    #ff79c6;
+      --cyan:    #8be9fd;
+      --purple:  #bd93f9;
+      --yellow:  #f1fa8c;
+      --orange:  #ffb86c;
+      --mono:    'JetBrains Mono', 'Courier New', monospace;
+      --display: 'Bebas Neue', sans-serif;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--mono);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.8;
+      padding: 0 1.25rem;
+      font-weight: 400;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 4rem 0 6rem;
+    }
+
+    /* ── Header ── */
+
+    header {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+
+    header h1 {
+      font-family: var(--display);
+      font-size: 5rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    header h1::after {
+      content: '_';
+      color: var(--green);
+      animation: blink 1.2s step-end infinite;
+      margin-left: 2px;
+    }
+
+    .contact {
+      margin-top: 0.5rem;
+      font-size: 0.72rem;
+      color: var(--secondary);
+    }
+
+    .email-link {
+      color: var(--secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--border);
+      transition: color 0.15s;
+    }
+
+    .email-link:hover {
+      color: var(--cyan);
+    }
+
+    /* ── Divider ── */
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.75rem 0;
+    }
+
+    /* ── Section label ── */
+
+    .section-label {
+      font-size: 0.65rem;
+      text-transform: lowercase;
+      letter-spacing: 0.05em;
+      color: var(--cyan);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .section-label::before {
+      content: '~/';
+      color: var(--secondary);
+    }
+
+    /* ── Whoami ── */
+
+    .whoami-section {
+      font-size: 0.8rem;
+    }
+
+    .prompt-line {
+      margin-bottom: 0.85rem;
+    }
+
+    .prompt-path {
+      color: var(--purple);
+    }
+
+    .prompt-dollar {
+      color: var(--green);
+    }
+
+    .prompt-cmd {
+      color: var(--text);
+    }
+
+    .whoami-output {
+      padding-left: 0;
+      line-height: 2;
+      font-weight: 300;
+      color: var(--text);
+      font-size: 0.8rem;
+    }
+
+    .whoami-output p::before {
+      content: '> ';
+      color: var(--secondary);
+    }
+
+    .interests-list {
+      list-style: none;
+      padding: 0 0 0 1.5rem;
+      margin: 0;
+      line-height: 2;
+    }
+
+    .interests-list li::before {
+      content: '· ';
+      color: var(--secondary);
+    }
+
+    .sub-interests-list {
+      list-style: none;
+      padding: 0 0 0 1.25rem;
+      margin: 0;
+      line-height: 2;
+    }
+
+    .sub-interests-list li::before {
+      content: '· ';
+      color: var(--muted);
+    }
+
+    .whoami-output a {
+      color: var(--cyan);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--border);
+      transition: color 0.15s;
+    }
+
+    .whoami-output a:hover {
+      color: var(--text);
+    }
+
+    /* ── Timeline ── */
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 0.4rem;
+      bottom: 0.4rem;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      column-gap: 1.25rem;
+      position: relative;
+    }
+
+    .entry::before {
+      content: '';
+      position: absolute;
+      left: -1.5rem;
+      top: 0.35rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--secondary);
+      border: 1px solid var(--secondary);
+      transform: translateX(-0.5px);
+    }
+
+    .entry:first-child::before {
+      background: var(--green);
+      border: none;
+      box-shadow: 0 0 8px var(--green);
+    }
+
+    .entry-date {
+      font-size: 0.7rem;
+      color: var(--purple);
+      line-height: 1.5;
+      padding-top: 0.25rem;
+      font-weight: 300;
+    }
+
+    .entry-title {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .entry-body h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--green);
+    }
+
+    .entry-sep {
+      color: var(--border);
+      font-weight: 300;
+      font-size: 0.8rem;
+    }
+
+    .entry-body .role {
+      font-size: 0.75rem;
+      color: var(--pink);
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .entry-desc {
+      font-size: 0.78rem;
+      color: var(--secondary);
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    .entry-body ul {
+      list-style: none;
+      padding: 0;
+      font-size: 0.8rem;
+      color: var(--text);
+    }
+
+    .entry-body ul li {
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 0.45rem;
+    }
+
+    .entry-body ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+    }
+
+    /* ── Projects ── */
+
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .project {
+      padding: 1.25rem 1rem;
+      border: 1px solid var(--border);
+      margin-bottom: -1px;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .project:hover {
+      background: var(--surface);
+      border-color: var(--yellow);
+    }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .project-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--yellow);
+    }
+
+    .try-button {
+      font-size: 0.6rem;
+      color: var(--bg);
+      background: var(--orange);
+      padding: 0.2rem 0.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+
+    .try-button:hover {
+      opacity: 0.8;
+    }
+
+    .project-github {
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      transition: color 0.15s;
+    }
+
+    .project-github:hover {
+      color: var(--text);
+    }
+
+    .project-body p {
+      font-size: 0.78rem;
+      color: var(--text);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .project-stack {
+      margin-top: 0.65rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .project-stack span {
+      font-size: 0.65rem;
+      color: var(--purple);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.45rem;
+      letter-spacing: 0.04em;
+      font-weight: 400;
+    }
+
+    /* ── Skills ── */
+
+    .skills {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      column-gap: 1.25rem;
+      font-size: 0.875rem;
+    }
+
+    .skill-key {
+      font-size: 0.65rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding-top: 0.15rem;
+      font-weight: 400;
+      opacity: 0.7;
+    }
+
+    .skill-val {
+      color: var(--text);
+      font-size: 0.8rem;
+    }
+
+    /* ── Footer ── */
+
+    footer {
+      margin-top: 4rem;
+      font-size: 0.65rem;
+      color: var(--muted);
+      font-weight: 300;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--border);
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: var(--orange);
+    }
+
+    /* ── Responsive ── */
+
+    @media (max-width: 520px) {
+      .entry {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+      }
+
+      .entry-date {
+        color: var(--purple);
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Ishan Vashishta</h1>
+    <div class="contact"><span id="email-slot"></span></div>
+  </header>
+
+  <hr>
+
+  <section class="whoami-section">
+    <div class="prompt-line">
+      <span class="prompt-path">~/portfolio</span><span class="prompt-dollar"> $ </span><span class="prompt-cmd">whoami</span>
+    </div>
+    <div class="whoami-output">
+      <p>Senior Software Engineer in Dallas, TX. Currently focused on building Agentic AI Systems.</p>
+      <p>I enjoy working on large, complex systems and using software as a tool to better understand and effectuate change in the world around me.</p>
+      <p>Some non-professional interests:</p>
+      <ul class="interests-list">
+        <li>Music:
+          <ul class="sub-interests-list">
+            <li>some <em>(mediocre)</em> songs on <a href="https://soundcloud.com/user-615934135" target="_blank" rel="noopener">SoundCloud &#8599;</a></li>
+            <li>check out <a href="https://ivashi.github.io/unwelltempered" target="_blank" rel="noopener">unwelltempered &#8599;</a> which began as an experiment in alternative tuning systems and has since developed into a musical sandbox</li>
+          </ul>
+        </li>
+        <li>Reading:
+          <ul class="sub-interests-list">
+            <li>some favorite fiction: <em>Solenoid</em> by Mircea C&#259;rtărescu &amp; <em>To The Lighthouse</em> by Virginia Woolf</li>
+            <li>some favorite poetry: <em>Be With</em> by Forrest Gander &amp; <em>Wild Is the Wind</em> by Carl Phillips</li>
+          </ul>
+        </li>
+        <li>Chess</li>
+        <li>Soccer</li>
+        <li>Running</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <div class="section-label">Timeline</div>
+    <div class="timeline">
+
+      <div class="entry">
+        <div class="entry-date">2025&mdash;present</div>
+        <div class="entry-body">
+          <div class="entry-title">
+            <h3>Capital One</h3>
+            <span class="entry-sep">&middot;</span>
+            <div class="role">Senior Software Engineer, AI Engineering</div>
+          </div>
+          <p class="entry-desc">Tech lead for a multi-agentic LLM system helping car dealerships sell vehicles through a conversational interface. Built the team&rsquo;s RAG pipeline, evaluation harnesses, and tool framework across a team of 6 engineers.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">2022&mdash;2025</div>
+        <div class="entry-body">
+          <div class="entry-title">
+            <h3>Revel</h3>
+            <span class="entry-sep">&middot;</span>
+            <div class="role">Software Engineer III, Rideshare Pricing</div>
+          </div>
+          <p class="entry-desc">Designed and shipped pricing algorithms that increased net rideshare revenue 2.2%. Rebuilt NYC pricing on Uber&rsquo;s H3 spatial index and built a dynamic discounting system targeting users by predicted ride-conversion likelihood.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">2021&mdash;2022</div>
+        <div class="entry-body">
+          <div class="entry-title">
+            <h3>iZotope</h3>
+            <span class="entry-sep">&middot;</span>
+            <div class="role">Software Engineer, Build &amp; Release / CI</div>
+          </div>
+          <p class="entry-desc">Cut installer release time from several days of manual work to minutes via a one-click automated build pipeline, enabling iZotope&rsquo;s shift to subscription licensing. Built a build-agent status dashboard on AWS Lambda + CloudWatch.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">2019&mdash;2021</div>
+        <div class="entry-body">
+          <div class="entry-title">
+            <h3>Amazon</h3>
+            <span class="entry-sep">&middot;</span>
+            <div class="role">Software Engineer, Alexa</div>
+          </div>
+          <p class="entry-desc">Reduced ML scientist dataset onboarding from 3&ndash;4 weeks to 1&ndash;2 days. Built a cost-attribution system tracking S3 reads/writes and a data exploration UI for browsing Alexa data schemas.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">2018</div>
+        <div class="entry-body">
+          <div class="entry-title">
+            <h3>Amazon</h3>
+            <span class="entry-sep">&middot;</span>
+            <div class="role">Software Engineering Intern, Alexa</div>
+          </div>
+          <p class="entry-desc">Placeholder description &mdash; something about what you shipped that summer.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">2015&mdash;2019</div>
+        <div class="entry-body">
+          <div class="entry-title">
+            <h3>University of Michigan</h3>
+            <span class="entry-sep">&middot;</span>
+            <div class="role">Philosophy &amp; Computer Science</div>
+          </div>
+          <p class="entry-desc">B.S. 2019. Placeholder &mdash; anything worth noting from your time here.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <div class="section-label">Projects</div>
+    <div class="projects">
+
+      <div class="project">
+        <div class="project-header">
+          <div class="project-left">
+            <div class="project-name">unwelltempered</div>
+            <a class="try-button" href="https://ivashi.github.io/unwelltempered" target="_blank" rel="noopener">try it out</a>
+          </div>
+          <a class="project-github" href="https://github.com/ivashi/unwelltempered" target="_blank" rel="noopener" aria-label="unwelltempered on GitHub">
+            <svg height="16" width="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </a>
+        </div>
+        <div class="project-body">
+          <p>Interactive music exploration tool in the browser. Features a keyboard with adjustable tuning, scale browser, harmonic interval visualizer, 16-step sequencer, and a bounce mode that triggers notes on a spinning circle of fifths. Supports historical temperaments (Pythagorean, Meantone, Werckmeister) and microtonal systems (19-TET, 31-TET). All synthesis via the Web Audio API &mdash; no external audio libraries.</p>
+          <div class="project-stack">
+            <span>React</span><span>Vite</span><span>Web Audio API</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-header">
+          <div class="project-left">
+            <div class="project-name">helm</div>
+          </div>
+          <a class="project-github" href="https://github.com/ivashi/helm" target="_blank" rel="noopener" aria-label="helm on GitHub">
+            <svg height="16" width="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </a>
+        </div>
+        <div class="project-body">
+          <p>Personal finance dashboard for net worth tracking, budgeting, retirement projections, and property management. Built local-first with on-device SQLite so financial data never leaves the machine.</p>
+          <div class="project-stack">
+            <span>FastAPI</span><span>React + Vite</span><span>Recharts</span><span>SQLite</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <span>&copy; 2026 Ishan Vashishta</span>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/ishanvashishta" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/ivashi" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+
+</div>
+<script>
+  (function () {
+    var p = ['ishan', '.vashishta5', '\x40', 'gmail', '.com'];
+    var addr = p.join('');
+    var slot = document.getElementById('email-slot');
+    if (slot) {
+      var a = document.createElement('a');
+      a.href = 'mai' + 'lto:' + addr;
+      a.textContent = 'ishan (dot) vashishta5 (at) gmail (dot) com';
+      a.className = 'email-link';
+      slot.appendChild(a);
+    }
+  })();
+</script>
+</body>
+</html>
