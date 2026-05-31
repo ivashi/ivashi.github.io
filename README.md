@@ -1,2 +1,1 @@
-# personalWebsite
-portfolio and personal website
+check it out: https://ivashi.github.io/
