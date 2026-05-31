@@ -100,6 +100,23 @@
       color: var(--cyan);
     }
 
+    .resume-link {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-size: 0.65rem;
+      color: var(--secondary);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.65rem;
+      letter-spacing: 0.08em;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .resume-link:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+    }
+
     /* ── Divider ── */
 
     hr {
@@ -496,6 +513,7 @@
   <header>
     <h1>Ishan Vashishta</h1>
     <div class="contact"><span id="email-slot"></span></div>
+    <div class="contact"><a class="resume-link" href="IshanVashishta-Resume.pdf" download>download resume ↓</a></div>
   </header>
 
   <hr>
