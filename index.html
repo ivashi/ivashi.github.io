@@ -67,12 +67,14 @@
 
     header h1 {
       font-family: var(--display);
-      font-size: 5rem;
+      font-size: clamp(2.75rem, 13vw, 5rem);
       font-weight: 400;
       letter-spacing: 0.06em;
       color: #fff;
       line-height: 1;
       margin-bottom: 0.5rem;
+      text-align: center;
+      width: 100%;
     }
 
     header h1::after {
@@ -90,14 +92,16 @@
 
     .email-link {
       color: var(--secondary);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-color: var(--border);
+      cursor: pointer;
       transition: color 0.15s;
     }
 
     .email-link:hover {
       color: var(--cyan);
+    }
+
+    .email-link.copied {
+      color: var(--green);
     }
 
     .resume-link {
@@ -682,14 +686,23 @@
 <script>
   (function () {
     var p = ['ishan', '.vashishta5', '\x40', 'gmail', '.com'];
-    var addr = p.join('');
     var slot = document.getElementById('email-slot');
     if (slot) {
-      var a = document.createElement('a');
-      a.href = 'mai' + 'lto:' + addr;
-      a.textContent = 'ishan (dot) vashishta5 (at) gmail (dot) com';
-      a.className = 'email-link';
-      slot.appendChild(a);
+      var s = document.createElement('span');
+      s.textContent = 'ishan (dot) vashishta5 (at) gmail (dot) com';
+      s.className = 'email-link';
+      s.title = 'click to copy';
+      s.addEventListener('click', function () {
+        navigator.clipboard.writeText(p.join('')).then(function () {
+          s.textContent = 'copied!';
+          s.classList.add('copied');
+          setTimeout(function () {
+            s.textContent = 'ishan (dot) vashishta5 (at) gmail (dot) com';
+            s.classList.remove('copied');
+          }, 2000);
+        });
+      });
+      slot.appendChild(s);
     }
   })();
 </script>
